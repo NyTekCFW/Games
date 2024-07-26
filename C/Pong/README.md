@@ -10,3 +10,8 @@ Player 1 :
 Player 2 :
      o = UP
      l = Down
+
+<div align="center">
+<img src="https://raw.githubusercontent.com/NyTekCFW/Games/assets/images/pong.png" alt="pong" width="20%">
+<img src="https://raw.githubusercontent.com/NyTekCFW/OpenMLX/master/assets/images/pong_debug.png" alt="pong debug" width="20%">
+</div>
