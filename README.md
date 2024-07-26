@@ -3,7 +3,12 @@ This repository is dedicated to my game development projects, encompassing origi
 
 ![-----------------------------------------------------](https://raw.githubusercontent.com/NyTekCFW/NyTekCFW/master/assets/line.png)
 
-## Available Games
+## <img src="https://skillicons.dev/icons?i=c" width="3%"/> :
 
 ### Pong
 - [A classic Pong game developed in C, utilizing the OpenMLX](https://github.com/NyTekCFW/Games/edit/main/C/Pong)
+
+![-----------------------------------------------------](https://raw.githubusercontent.com/NyTekCFW/NyTekCFW/master/assets/line.png)
+
+## <img src="https://skillicons.dev/icons?i=cpp" width="3%"/> :
+
