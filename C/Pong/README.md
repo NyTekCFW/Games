@@ -3,6 +3,20 @@ A classic Pong game developed in C, utilizing the OpenMLX.
 
 ![-----------------------------------------------------](https://raw.githubusercontent.com/NyTekCFW/NyTekCFW/master/assets/line.png)
 
+## Build and use
+
+### Build
+```bash
+make or make re
+```
+
+### Use
+```bash
+./mlx_engine
+```
+
+![-----------------------------------------------------](https://raw.githubusercontent.com/NyTekCFW/NyTekCFW/master/assets/line.png)
+
 ## Command
 <br>
 
