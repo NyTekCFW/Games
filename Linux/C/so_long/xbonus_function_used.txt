@@ -1,0 +1,18 @@
+Liste des fonctions utiliser dans le projet non citer dans le sujet et explication de leur utilisation:
+(lire le sujet partie bonus): "Du moment que vous justifiez leur utilisation en évaluation,
+vous avez le droit d’utiliser des fonctions supplémentaires afin de faire la partie bonus. Soyez malins !"
+
+clock / clock_t :
+permet de recuperer l horloge cpu, dans mon projet la fonction clock permet de recuperer l heure cpu et de calibrer les animation, le son, le fade_rgb etc par rapport a l heure cpu,
+si on procede au calcule suivant : next = clock() + 1000000 next correspond a l heure cpu + 1 sec donc on peut faire if (clock >= next),
+donc on detecte si 1 seconde s est ecouler, de plus on peut profiter de cette fonction pour synchroniser les ordinateur peut importe leur puissance.
+en estimation les pc 42 font tourner le jeux environ a 80-400fps selon le nombre d action a effectuer,
+les pc portable doter d une rtx 3060 font tourner le jeux a ~1100 fps (brider)
+soit une difference de presque 3x le nombre max pour les pc 42.
+donc via clock on peut faire en sorte de limiter le temps de rendu a 120 fps pour sync un pc portable avec les pc 42 se qui donnera une difference d environ 40 fps ce qui est
+beaucoup plus facile a gerer que 800 fps de difference, d ou le fais que des animation seront 800x plus rapide ou plus lent selon le pc.
+
+system : cette fonction permet l utilisation de commande shell en C par ex on peut utiliser system("rm -rf file.txt"); pour supprimer le fichier file.txt depuis un fichier .c,
+dans mon projet la fonction system est utiliser pour les chose suivante : rm -rf le projet et le retelecharger depuis github au cas ou si celui ci detecte des fichier comme des image ou des musique manquante,
+je m en sert egalement pour pour jouer des musiques ou des effets sonore et aussi afin de stopper ces effets audio.
+
