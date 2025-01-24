@@ -15,13 +15,15 @@
 
 char		*xstrrchr(const char *s, int c);
 char		*xstrcpy(char *buffer, const char *src);
-char		*xitoa(u32 nbr);
+char		*xitoa(s32 nbr);
 char		*xstrcat(char *dst, const char *src);
 char		*xstrchr(const char *s, int c);
 char		*xstrncpy(char *dst, const char *src, u32 size);
 char		*xstrstr(char *stack, const char *str);
 char		*xstrdup(char *str);
 char		*xstrtrim(char *str);
+char		*va_alloc(const char* fmt, ...);
+char		*va_f_alloc(float data, u32 p);
 char		**xsplit(char const *s, char c, int *size);
 s32			xatoi(const char *str);
 u32			xstrlen(const char *str);

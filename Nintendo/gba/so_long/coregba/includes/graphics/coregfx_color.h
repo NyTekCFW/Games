@@ -5,8 +5,8 @@
 /*                                                                            */
 /*   By: NyTekCFW - Youtube.com/NyTekCFW                                      */
 /*                                                                            */
-/*   Created: 20/12/2024 15:10:03 by NyTekCFW                                 */
-/*   Updated: 20/12/2024 15:10:08 by NyTekCFW                                 */
+/*   Created: 10/01/2025 00:24:45 by NyTekCFW                                 */
+/*   Updated: 16/01/2025 03:09:27 by NyTekCFW                                 */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,7 +15,7 @@
 
 void	replace_color(u16 index, u16 color);
 void	rgb15_to_rgb(u16 rgb15, u8 *r, u8 *g, u8 *b);
-void	set_palette(u16 *pal);
+void	set_palette(const u16 *pal, u16 size, void (*callback)(u16 *));
 u16	    *get_palette(void);
 u16		(*get_stab_color(void))[16];
 u16		rgb_to_15bit(u8 r, u8 g, u8 b);

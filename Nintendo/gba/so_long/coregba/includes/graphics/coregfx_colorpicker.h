@@ -5,11 +5,10 @@
 /*                                                                            */
 /*   By: NyTekCFW - Youtube.com/NyTekCFW                                      */
 /*                                                                            */
-/*   Created: 20/12/2024 15:18:44 by NyTekCFW                                 */
-/*   Updated: 20/12/2024 15:19:16 by NyTekCFW                                 */
+/*   Created: 10/01/2025 00:24:45 by NyTekCFW                                 */
+/*   Updated: 16/01/2025 03:09:37 by NyTekCFW                                 */
 /*                                                                            */
 /* ************************************************************************** */
-
 
 #ifndef COREGFX_COLORPICKER_H
 # define COREGFX_COLORPICKER_H
@@ -22,7 +21,7 @@ typedef struct colorpicker_s
 	u16		p_x;
 	u16		p_y;
 	void	(*callback)(u8, u8, u16);
-}	t_cp;
+}ALIGNED(4)	t_cp;
 
 void	show_color_picker(void);
 void	open_color_picker(void);

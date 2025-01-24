@@ -5,8 +5,8 @@
 /*                                                                            */
 /*   By: NyTekCFW - Youtube.com/NyTekCFW                                      */
 /*                                                                            */
-/*   Created: 23/12/2024 19:57:32 by NyTekCFW                                 */
-/*   Updated: 24/12/2024 20:20:50 by NyTekCFW                                 */
+/*   Created: 10/01/2025 00:24:45 by NyTekCFW                                 */
+/*   Updated: 16/01/2025 03:13:29 by NyTekCFW                                 */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -61,18 +61,21 @@ static void	store_sprites(t_sprites *new)
 	++texture->sprites_count;
 }
 
-void	register_sprite(const char *name, u16 *pal, u8 *sprite, u16 width, u16 height, u8 n_image)
+void	register_sprite(const char *name, const u16 *pal, u16 pal_size, void (*pal_callback)(u16 *), const u8 *sprite, u16 width, u16 height, u8 n_image)
 {
 	t_sprites	box;
 
-	if (name && name[0] && !get_sprite(name))
+	if (name && name[0] && !get_sprite(name)
+		&& pal && sprite)
 	{
 		box.h_name = fnv1a_hash(name);
 		box.width = width;
 		box.height = height;
 		box.img_count = n_image;
+		box.pal_callback = pal_callback;
 		box.next = NULL;
 		box.pal = pal;
+		box.pal_size = pal_size * sizeof(u16);
 		box.img = sprite;
 		store_sprites(&box);
 	}

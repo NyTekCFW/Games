@@ -5,14 +5,14 @@
 /*                                                                            */
 /*   By: NyTekCFW - Youtube.com/NyTekCFW                                      */
 /*                                                                            */
-/*   Created: 17/12/2024 23:11:36 by NyTekCFW                                 */
-/*   Updated: 17/12/2024 23:11:38 by NyTekCFW                                 */
+/*   Created: 10/01/2025 00:24:45 by NyTekCFW                                 */
+/*   Updated: 16/01/2025 03:13:35 by NyTekCFW                                 */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../../includes/coregba.h"
 
-u8	r_glyph_width(char c)
+inline u8	r_glyph_width(char c)
 {
 	if (c >= 0x20 && c <= 0x7E)
 		return (font_basic_width[c - 0x20]);
@@ -55,12 +55,12 @@ static void	draw_symbol(char c, s16 x, s16 y, u8 space)
 	draw_sprite(x, y, c - beg, str);
 }
 
-IN_IWRAM void	draw_text(char *str, s16 x, s16 y, u16 clr)
+IN_IWRAM void	draw_text(const char *str, s16 x, s16 y, u16 clr)
 {
+	const char	*c = 0;
 	t_virtual	*vmem = get_virtual();
 	u16			*vbuf = gcm_get_draw_buffer();
 	int			x_new = x;
-	char		*c = 0;
 	s16			i = 0;
 	s8			x2 = 0;
 	s8			y2 = 0;

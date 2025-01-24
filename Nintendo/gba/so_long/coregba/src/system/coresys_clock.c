@@ -16,16 +16,16 @@
 
 void	clock_init(void)
 {
-	*(volatile u32 *)0x4000108 = 0; //REG_TM2CNT
-	*(volatile u32 *)0x400010C = 0; //REG_TM3CNT
-	*(u16 *)0x400010A = 0x82;	//enable timer
-	*(u16 *)0x400010E = 0x84;	//anti timer overflow
+	REG_TM2D = 0;
+	REG_TM3D = 0;
+	REG_TM2CNT = (TIMER_ENABLE | TIMER_FREQ_256);
+	REG_TM3CNT = (TIMER_ENABLE | TIMER_CASCADE);//anti timer overflow
 }
 
 u32	clock(void)
 {
-	u16			TM2CNT_L = *(volatile u16 *)0x4000108;
-	u16			TM3CNT_L = *(volatile u16 *)0x400010C;
+	u16			TM2CNT_L = REG_TM2D;
+	u16			TM3CNT_L = REG_TM3D;
 	u32	TM4CNT = (TM3CNT_L << 16 | TM2CNT_L);
 
 	if (TM4CNT >= TIME_LIMIT)
@@ -51,7 +51,6 @@ u32	get_fps(u32 cpu)
 	s = (float)cpu / CLOCKS_PER_SEC;
 	return ((1 / s));
 }
-
 
 void	sleep(float sec)
 {

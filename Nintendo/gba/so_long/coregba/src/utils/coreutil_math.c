@@ -52,3 +52,8 @@ float	sqrtf(float num)
 	}
 	return (0);
 }
+
+inline int	clamp(int value, int min, int max)
+{
+    return value < min ? min : (value > max ? max : value);
+}

@@ -12,11 +12,6 @@
 
 #include "../../includes/main.h"
 
-void	print_minimap_menu(void)
-{
-	
-}
-
 void	print_fps(void)
 {
 	static u16	min_x = 0xFFFF;

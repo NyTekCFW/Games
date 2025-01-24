@@ -12,50 +12,29 @@
 
 #include "../../includes/main.h"
 
-static char	*get_stat_name(u8 index)
-{
-	switch(index)
-	{
-		case STATS_LD_LVL: return ("Level :");
-		case STATS_LD_PRESTIGE: return ("Prestige :");
-		case STATS_LD_XP: return ("XP :");
-		case STATS_LD_KILLS: return ("Kills :");
-		case STATS_LD_DEATHS: return ("Deaths :");
-		case STATS_LD_RUPPIES: return ("Ruppies :");
-		case STATS_LD_CLEARED_LVL: return ("Cleared :");
-		default: return ("N/A");
-	}
-	return (NULL);
-}
-
-static char	*get_stat_str_value(u8 index)
-{
-	t_stats	*stats = get_stats();
-
-	if (index < STATS_LD_MAX)
-		return (xitoa(stats->ld[index]));
-	return (NULL);
-}
-
 char	*get_stat_info(u8 index)
 {
-	char	*name = get_stat_name(index);
-	char	*info = get_stat_str_value(index);
-	char	*buffer = NULL;
-	u32		len = 0;
+	t_stats		*stats = get_stats();
+	char		*tmp = NULL;
+	char		*str = NULL;
 
-	if (name)
+	switch(index)
 	{
-		if (info)
+		case STATS_LD_LVL: return (va_alloc("Level :%u", stats->ld[STATS_LD_LVL]));
+		case STATS_LD_PRESTIGE: return (va_alloc("Prestige :%u", stats->ld[STATS_LD_PRESTIGE]));
+		case STATS_LD_XP: return (va_alloc("XP :%u/%u", stats->ld[STATS_LD_XP], stats->ld[STATS_LD_LVL] * 150));
+		case STATS_LD_KILLS: return (va_alloc("Kills :%u", stats->ld[STATS_LD_KILLS]));
+		case STATS_LD_DEATHS: return (va_alloc("Deaths :%u", stats->ld[STATS_LD_DEATHS]));
+		case STATS_LD_RUPPIES: return (va_alloc("Ruppies :%u", stats->ld[STATS_LD_RUPPIES]));
+		case STATS_LD_CLEARED_LVL: return (va_alloc("Cleared :%u", stats->ld[STATS_LD_CLEARED_LVL]));
+		case STATS_LD_TIME:
 		{
-			len = xstrlen(name) + xstrlen(info) + 1;
-			if (xalloc((void **)&buffer, len, sizeof(char)))
-			{
-				xstrcpy(buffer, name);
-				xstrcpy(&buffer[xstrlen(buffer)], info);
-			}
-			xfree((void **)&info);
+			tmp = get_playtime_str_format(stats->ld[STATS_LD_TIME], PLAYTIME_FORMAT_HOURS_MINUTES);
+			str = va_alloc("Time:%s", tmp);
+			xfree((void **)&tmp);
+			return (str);
 		}
+		default: return (NULL);
 	}
-	return (buffer);
+	return (NULL);
 }

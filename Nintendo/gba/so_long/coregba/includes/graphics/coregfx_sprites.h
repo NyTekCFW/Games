@@ -5,8 +5,8 @@
 /*                                                                            */
 /*   By: NyTekCFW - Youtube.com/NyTekCFW                                      */
 /*                                                                            */
-/*   Created: 23/12/2024 19:57:31 by NyTekCFW                                 */
-/*   Updated: 24/12/2024 20:19:31 by NyTekCFW                                 */
+/*   Created: 10/01/2025 00:24:45 by NyTekCFW                                 */
+/*   Updated: 16/01/2025 03:10:08 by NyTekCFW                                 */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,18 +19,20 @@ typedef struct sprite_s
 	u16					width;
 	u16					height;
 	u8					img_count;
-	u8					*img;
-	u16					*pal;
+	u16					pal_size;
+	void				(*pal_callback)(u16 *);
+	const u16			*pal;
+	const u8			*img;
 	struct sprite_s		*next;
-}ALIGNED(4)	t_sprites;
+}ALIGNED(8)	t_sprites;
 
 typedef struct texture_s
 {
 	t_sprites	sprites;
 	u16			sprites_count;
-}	t_texture;
+}ALIGNED(8)	t_texture;
 
 void		purge_sprites(void);
-void		register_sprite(const char *name, u16 *palette, u8 *sprite, u16 width, u16 height, u8 n_image);
+void		register_sprite(const char *name, const u16 *palette, u16 pal_size, void (*pal_callback)(u16 *), const u8 *sprite, u16 width, u16 height, u8 n_image);
 t_sprites	*get_sprite(const char *name);
 #endif

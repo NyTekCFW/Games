@@ -5,8 +5,8 @@
 /*                                                                            */
 /*   By: NyTekCFW - Youtube.com/NyTekCFW                                      */
 /*                                                                            */
-/*   Created: 14/12/2024 16:20:24 by NyTekCFW                                 */
-/*   Updated: 20/12/2024 19:55:13 by NyTekCFW                                 */
+/*   Created: 10/01/2025 00:24:45 by NyTekCFW                                 */
+/*   Updated: 16/01/2025 03:13:58 by NyTekCFW                                 */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -29,7 +29,7 @@ typedef struct mmap_s
 	u16		max_sector;
 	u32		start_address;
 	u32		end_address;
-}ALIGNED(4)	t_mmap;
+}ALIGNED(8)	t_mmap;
 
 typedef struct sector_s
 {
@@ -41,7 +41,7 @@ typedef struct sector_s
 //Aligned to 4 for memory optimization
 ALIGNED(4) IN_EWRAM char		_mem_heap[MEMORY_HEAP_SIZE];	//Heap region
 ALIGNED(4) IN_EWRAM t_sector	_sectors[MAX_SECTOR];			//sector region
-ALIGNED(4) IN_EWRAM t_mmap		_mmap = {0};					//memory structure info
+ALIGNED(8) IN_EWRAM t_mmap		_mmap = {0};					//memory structure info
 
 //func prototype
 static t_mmap					*get_mmap(void);

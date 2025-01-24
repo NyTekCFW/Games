@@ -12,19 +12,7 @@
 
 #include "../../includes/main.h"
 
-static void	_increment_scroll(void)
-{
-	submenu_scroll_increment(9, NULL);
-	submenu_refresh();
-}
-
-static void	_decrement_scroll(void)
-{
-	submenu_scroll_decrement(9, NULL);
-	submenu_refresh();
-}
-
-void	draw_trophies_list(void)
+static void	draw_trophies_list(void)
 {
 	s8			i = 0;
 	int			index = 0;
@@ -42,6 +30,24 @@ void	draw_trophies_list(void)
 	}
 }
 
+static void	_draw_trophy(void)
+{
+	draw_rectangle(2, 2, 92, 68, 0x3def, 1);
+	draw_trophies_list();
+}
+
+static void	_increment_scroll(void)
+{
+	submenu_scroll_increment(9, NULL);
+	_draw_trophy();
+}
+
+static void	_decrement_scroll(void)
+{
+	submenu_scroll_decrement(9, NULL);
+	_draw_trophy();
+}
+
 void	submenu_trophies(void)
 {
 	unbind_allkeys();
@@ -49,5 +55,5 @@ void	submenu_trophies(void)
 	keynum_replace(BUTTON_MOVE_FORWARD, _decrement_scroll);
 	keynum_replace(BUTTON_MOVE_BACKWARD, _increment_scroll);
 	draw_trophies_list();
-	draw_text(STR_BUTTON_B " Back | " STR_DPAD_UP_DOWN " Move", 2, 71, 0xFFFF);
+	draw_text(STR_BUTTON_B " Back| " STR_DPAD_UP_DOWN " Move", 2, 71, 0xFFFF);
 }

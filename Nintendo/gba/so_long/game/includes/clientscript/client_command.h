@@ -10,4 +10,9 @@
 /*                                                                            */
 /* ************************************************************************** */
 
-void	pcommand_mm(void);
+#ifndef CLIENT_COMMAND_H
+# define CLIENT_COMMAND_H
+
+void	pcommand_ingame(void);
+
+#endif

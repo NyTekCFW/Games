@@ -216,7 +216,7 @@ char	*xstrtrim(char *str)
 	return (b);
 }
 
-static u32	_get_xitoa_len(u32 n)
+static u32	_get_xitoa_len(s32 n)
 {
 	u32	len;
 
@@ -231,7 +231,7 @@ static u32	_get_xitoa_len(u32 n)
 	return (len);
 }
 
-static char	*_xitoa(u32 *nbr, char *res, u32 *len)
+static char	*_xitoa(s32 *nbr, char *res, u32 *len)
 {
 	res[*len] = '\0';
 	if (*nbr == 0)
@@ -252,7 +252,7 @@ static char	*_xitoa(u32 *nbr, char *res, u32 *len)
 	return (res);
 }
 
-char	*xitoa(u32 nbr)
+char	*xitoa(s32 nbr)
 {
 	u32			len;
 	char		*result;

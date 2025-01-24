@@ -20,15 +20,15 @@ void	_opposite(void)
 
 	switch (sub->current_scroll)
 	{
-		case 0:
+		case VAR_SHOW_FPS:
 		{
-			s->show_fps = !s->show_fps;
+			s->vars[VAR_SHOW_FPS] = !s->vars[VAR_SHOW_FPS];
 			break;
 		}
-		case 1:
+		case VAR_LIMIT_FPS:
 		{
-			s->limit_fps = !s->limit_fps;
-			engine->max_fps = (s->limit_fps) ? 60 : 255;
+			s->vars[VAR_LIMIT_FPS] = !s->vars[VAR_LIMIT_FPS];
+			engine->max_fps = (s->vars[VAR_LIMIT_FPS]) ? engine->backup_fps : 255;
 			break;
 		}
 	}
@@ -71,5 +71,5 @@ void	submenu_options(void)
 	keynum_replace(BUTTON_MOVE_FORWARD, _decrement_scroll);
 	keynum_replace(BUTTON_MOVE_BACKWARD, _increment_scroll);
 	draw_options();
-	draw_text(STR_BUTTON_B " Back", 2, 71, 0xFFFF);
+	draw_text(STR_BUTTON_B " Back| " STR_DPAD_UP_DOWN " Move", 2, 71, 0xFFFF);
 }

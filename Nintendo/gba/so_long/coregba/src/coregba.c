@@ -16,7 +16,14 @@
 /// @return ptr of the static
 t_core	*get_core(void)
 {
-	static t_core	lib_coregba = {0};
+	static t_core	lib_coregba =
+	{
+		.engine = 
+		{
+			.key_input_speed = 10,
+		},
+		0
+	};
 
 	return (&lib_coregba);
 }
@@ -34,6 +41,11 @@ t_engine	*get_engine(void)
 t_texture	*get_texture(void)
 {
 	return (&get_core()->texture);
+}
+
+t_audio	*get_audio(void)
+{
+	return (&get_core()->audio);
 }
 
 t_cp	*get_color_picker(void)

@@ -16,6 +16,6 @@
 u8		r_glyph_width(char c);
 u8		r_glyph_height(void);
 u32		r_textwidth(const char *str);
-void	draw_text(char *str, s16 x, s16 y, u16 clr);
+void	draw_text(const char *str, s16 x, s16 y, u16 clr);
 
 #endif

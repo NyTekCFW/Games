@@ -1,12 +1,12 @@
 /* ************************************************************************** */
 /*   ~Header by : NyTekCFW~                                   SVSC Dev Team   */
 /*                                                                            */
-/*   coregfx_global.h                                                         */
+/*   coregfx_graphics.h                                                       */
 /*                                                                            */
 /*   By: NyTekCFW - Youtube.com/NyTekCFW                                      */
 /*                                                                            */
-/*   Created: 20/12/2024 15:08:18 by NyTekCFW                                 */
-/*   Updated: 20/12/2024 15:08:22 by NyTekCFW                                 */
+/*   Created: 10/01/2025 00:24:45 by NyTekCFW                                 */
+/*   Updated: 16/01/2025 03:09:52 by NyTekCFW                                 */
 /*                                                                            */
 /* ************************************************************************** */
 

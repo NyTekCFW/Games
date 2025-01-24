@@ -22,14 +22,14 @@ char	*get_dvars_name(char *buffer, u8 index)
 		case VAR_SHOW_FPS:
 		{
 			xstrcpy(buffer, "Show FPS ");
-			if (settings->show_fps)
+			if (settings->vars[VAR_SHOW_FPS])
 				data = STR_ICON_CHECKED;
 			break ;
 		}
 		case VAR_LIMIT_FPS:
 		{
 			xstrcpy(buffer, "Limit FPS ");
-			if (settings->limit_fps)
+			if (settings->vars[VAR_LIMIT_FPS])
 				data = STR_ICON_CHECKED;
 			break ;
 		}

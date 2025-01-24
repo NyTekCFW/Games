@@ -13,7 +13,23 @@
 #ifndef CORESYS_DMA_H
 # define CORESYS_DMA_H
 
+# define DMA_SYNC_TO_TIMER		0x30000000
+
+//# define DMA_32					(1 << 10) // Transfert de 32 bits (au lieu de 16 bits)
+ // Synchronisation avec un timer (déclenche le DMA à chaque cycle de timer)
+/*
+#define REG_DMA1SAD				(*(volatile uint32_t *)0x40000BC)
+#define REG_DMA1DAD				(*(volatile uint32_t *)0x40000C0)
+//#define REG_DMA1CNT				(*(volatile uint32_t *)0x40000C4)
+#define REG_DMA2SAD				(*(volatile uint32_t *)0x40000C8)
+#define REG_DMA2DAD				(*(volatile uint32_t *)0x40000CC)
+//#define REG_DMA2CNT				(*(volatile uint32_t *)0x40000D0)
+#define DMA_ENABLE				(1 << 15) // Activer le DMA
+//#define DMA_REPEAT				(1 << 9)  // Répéter le transfert (utilisé avec un déclencheur comme un timer)
+//#define DMA_SRC_INC				(0 << 7)  // Incrémenter l'adresse source après chaque transfert (par défaut)
+//#define DMA_SRC_FIXED			(1 << 7)  // Source fixe (adresse source reste constante)
 // not sort and optimized
+*/
 /*
 #define DmaSetUnchecked(dmaNum, src, dest, control) \
 {                                                 \

@@ -25,6 +25,9 @@ enum e_map_lvl
 	MAP_LEVEL_B4,
 	MAP_LEVEL_MAX
 };
+
+extern const u8 area_raw_01[324];
+extern const u8 area_obj_raw_01[324];
 /*
 extern u8	level_a1[32][32];
 extern u8	level_a2[32][32];

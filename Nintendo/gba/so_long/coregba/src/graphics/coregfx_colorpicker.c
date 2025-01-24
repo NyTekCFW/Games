@@ -5,8 +5,8 @@
 /*                                                                            */
 /*   By: NyTekCFW - Youtube.com/NyTekCFW                                      */
 /*                                                                            */
-/*   Created: 28/12/2024 16:32:33 by NyTekCFW                                 */
-/*   Updated: 28/12/2024 19:25:02 by NyTekCFW                                 */
+/*   Created: 10/01/2025 00:24:45 by NyTekCFW                                 */
+/*   Updated: 16/01/2025 03:13:00 by NyTekCFW                                 */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -82,8 +82,8 @@ IN_IWRAM void	show_color_picker(void)
 	s8 row = c_row - 1;
 	u16 n_x = cp->p_x;
 
-	set_palette(pal_color_picker);
-	print_img(cp->p_x, cp->p_y, 26, 26, 0, img_color_picker_bkg);
+	draw_sprite(cp->p_x, cp->p_y, 0, "color_picker_bkg");
+	set_palette(pal_basics_color, 420, NULL);
 	while (i < 3)
 	{
 		switch (i)

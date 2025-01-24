@@ -5,8 +5,8 @@
 /*                                                                            */
 /*   By: NyTekCFW - Youtube.com/NyTekCFW                                      */
 /*                                                                            */
-/*   Created: 01/01/2025 03:40:46 by NyTekCFW                                 */
-/*   Updated: 01/01/2025 03:40:47 by NyTekCFW                                 */
+/*   Created: 10/01/2025 00:24:45 by NyTekCFW                                 */
+/*   Updated: 16/01/2025 03:15:25 by NyTekCFW                                 */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -35,5 +35,5 @@ typedef struct trophies_s
 }ALIGN(4)	t_trophy;
 
 char	*get_trophy_name(u8 index);
-
+bool	try_unlock_trophy(u8 index, bool (*check_func)(void *), void *param);
 #endif

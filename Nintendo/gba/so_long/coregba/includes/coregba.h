@@ -5,8 +5,8 @@
 /*                                                                            */
 /*   By: NyTekCFW - Youtube.com/NyTekCFW                                      */
 /*                                                                            */
-/*   Created: 21/12/2024 17:06:44 by NyTekCFW                                 */
-/*   Updated: 21/12/2024 18:28:18 by NyTekCFW                                 */
+/*   Created: 10/01/2025 00:24:45 by NyTekCFW                                 */
+/*   Updated: 16/01/2025 03:12:24 by NyTekCFW                                 */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -51,12 +51,14 @@ typedef struct core_s
 	t_key		key[BUTTON_MAX];
 	t_engine	engine;
 	t_texture	texture;
+	t_audio		audio;
 	t_cp		color_picker;
-}	t_core;
+}ALIGNED(8)	t_core;
 
 t_core		*get_core(void);
 t_callback	*get_callback(void);
 t_engine	*get_engine(void);
 t_texture	*get_texture(void);
+t_audio		*get_audio(void);
 t_cp		*get_color_picker(void);
 #endif

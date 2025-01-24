@@ -5,12 +5,30 @@
 /*                                                                            */
 /*   By: NyTekCFW - Youtube.com/NyTekCFW                                      */
 /*                                                                            */
-/*   Created: 27/12/2024 21:37:21 by NyTekCFW                                 */
-/*   Updated: 29/12/2024 04:15:27 by NyTekCFW                                 */
+/*   Created: 10/01/2025 00:24:45 by NyTekCFW                                 */
+/*   Updated: 16/01/2025 03:17:33 by NyTekCFW                                 */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../../includes/main.h"
+
+static bool	can_unlock(void *data)
+{
+	t_sav	*sav = (t_sav *)data;
+
+	return (sav->user_data.skins[SKIN_JACKET] != 0x030b
+			&& sav->user_data.skins[SKIN_BODY] != 0x1e7f
+			&& sav->user_data.skins[SKIN_EQUIPMENTS] != 0x0178);
+}
+
+static void	callback_back(void)
+{
+	t_trophy	*trophy = get_trophy(TROPHY_STYLIST);
+
+	try_unlock_trophy(TROPHY_STYLIST, can_unlock, get_sav());
+	build_savedata();
+	submenu_back();
+}
 
 static u8	*get_skin_id(void)
 {
@@ -33,15 +51,12 @@ static void	skin_switch(void)
 static void	skin_color_update(u8 row, u8 col, u16 color)
 {
 	u8			*id = get_skin_id();
-	t_sprites	*poc = get_sprite("link_test");
+	t_sav		*sav =get_sav();
 
-	switch (*id)
-	{
-		case 0: poc->pal[1] = color; break;
-		case 1: poc->pal[2] = color; break;
-		case 2: poc->pal[3] = color; break;
-	}
-	draw_sprite(104, 63, 0, "link_test");
+	sav->user_data.skins[*id] = color;
+	draw_sprite(103, 63 - 32, 0, "link_melee_du");
+	draw_sprite(103, 63 - 16, 0, "link_melee_rl");
+	draw_sprite(103, 63, 0, "link_walk");
 }
 
 void	submenu_skin_color(void)
@@ -57,5 +72,5 @@ void	submenu_skin_color(void)
 	cp->callback = skin_color_update;
 	open_color_picker();
 	keynum_replace(BUTTON_A, skin_switch);
-	keynum_replace(BUTTON_B, submenu_back);
+	keynum_replace(BUTTON_B, callback_back);
 }

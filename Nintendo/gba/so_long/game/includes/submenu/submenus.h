@@ -1,12 +1,12 @@
 /* ************************************************************************** */
 /*   ~Header by : NyTekCFW~                                   SVSC Dev Team   */
 /*                                                                            */
-/*   submenu.h                                                                */
+/*   submenus.h                                                               */
 /*                                                                            */
 /*   By: NyTekCFW - Youtube.com/NyTekCFW                                      */
 /*                                                                            */
-/*   Created: 27/12/2024 20:00:46 by NyTekCFW                                 */
-/*   Updated: 27/12/2024 20:00:47 by NyTekCFW                                 */
+/*   Created: 10/01/2025 00:24:45 by NyTekCFW                                 */
+/*   Updated: 16/01/2025 03:16:20 by NyTekCFW                                 */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -35,7 +35,7 @@ typedef struct submenu_s
 	s8		prev_sub[SUB_MAX];
 	s8		prev_count;
 	void	(*entries[SUB_MAX])(void);
-}	t_submenu;
+}ALIGNED(4)	t_submenu;
 
 //basic submenu funcs
 void	submenu_access(s8 sub);
@@ -44,9 +44,11 @@ void	submenu_refresh(void);
 void	submenu_back(void);
 void	submenu_scroll_increment(u8 max, u8 *prev);
 void	submenu_scroll_decrement(u8 max, u8 *prev);
+void	render_poc(void);
 //submenu callback
 void	submenu_main_menu(void);
 void	submenu_play(void);
+void	submenu_map_custom(void);
 void	submenu_skin_color(void);
 void	submenu_controls(void);
 void	submenu_trophies(void);

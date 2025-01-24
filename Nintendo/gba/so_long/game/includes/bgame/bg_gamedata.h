@@ -22,6 +22,7 @@ typedef struct gameinfo_s
 typedef struct gamestate_s
 {
 	u8		status;
+	bool	cl_ingame;
 	bool	in_pause;
 }ALIGN(4)	t_gamestate;
 

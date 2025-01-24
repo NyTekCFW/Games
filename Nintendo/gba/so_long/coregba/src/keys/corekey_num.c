@@ -35,6 +35,23 @@ void	keynum_release(u8 id)
 	}
 }
 
+void	keynum_release_all(void)
+{
+	u8		id = 0;
+	t_key	*key = NULL;
+
+	while (id < BUTTON_MAX)
+	{
+		key = get_key(id);
+		if (key)
+		{
+			key->ignore = true;
+			key->is_pressed = false;
+		}
+		++id;
+	}
+}
+
 void	keynum_replace(u8 id, void (*(func))(void))
 {
 	t_key	*key = get_key(id);
@@ -61,7 +78,7 @@ bool	keynum_execute(u8 id)
 {
 	t_key	*key = get_key(id);
 
-	if (key	&& !key->ignore && key->is_pressed && key->callback)
+	if (key && !key->freeze && !key->ignore && key->is_pressed && key->callback)
 		return (key->callback(), true);
 	return (false);
 }
@@ -76,4 +93,18 @@ t_key	*get_key(u8 id)
 	if (id < BUTTON_MAX)
 		return (&get_core()->key[id]);
 	return (NULL);
+}
+
+void	freeze_controls(bool freeze)
+{
+	u8		id = 0;
+	t_key	*key = NULL;
+
+	while (id < BUTTON_MAX)
+	{
+		key = get_key(id);
+		if (key)
+			key->freeze = freeze;
+		++id;
+	}
 }

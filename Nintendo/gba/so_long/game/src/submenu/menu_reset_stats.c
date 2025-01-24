@@ -5,8 +5,8 @@
 /*                                                                            */
 /*   By: NyTekCFW - Youtube.com/NyTekCFW                                      */
 /*                                                                            */
-/*   Created: 28/12/2024 00:48:53 by NyTekCFW                                 */
-/*   Updated: 29/12/2024 04:15:18 by NyTekCFW                                 */
+/*   Created: 10/01/2025 00:24:45 by NyTekCFW                                 */
+/*   Updated: 16/01/2025 03:17:27 by NyTekCFW                                 */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,20 +14,18 @@
 
 static void	_reset_yes(void)
 {
-	t_save		*save = get_save();
+	t_sav		*sav = get_sav();
 	t_stats		*stats = get_stats();
-	t_sprites	*sprite = get_sprite("link_test");
+	u8			i = 0;
 
 	xmemset(stats, 0, sizeof(t_stats));
-	save->skin.clr_jacket = 0x030b;
-	save->skin.clr_skin = 0x1e7f;
-	save->skin.clr_equipment = 0x0178;
-	if (sprite)
-	{
-		sprite->pal[1] = 0x030b;
-		sprite->pal[2] = 0x1e7f;
-		sprite->pal[3] = 0x0178;
-	}
+	sav->user_data.skins[SKIN_JACKET] = 0x030b;
+	sav->user_data.skins[SKIN_BODY] = 0x1e7f;
+	sav->user_data.skins[SKIN_EQUIPMENTS] = 0x0178;
+	while (i < TROPHY_MAX)
+		get_trophy(i++)->unlocked = false;
+	stats->ld[STATS_LD_LVL] = 1;
+	try_unlock_trophy(TROPHY_NEW_START, NULL, NULL);
 	keynum_release(BUTTON_A);
 	submenu_back();
 }

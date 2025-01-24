@@ -5,13 +5,13 @@
 /*                                                                            */
 /*   By: NyTekCFW - Youtube.com/NyTekCFW                                      */
 /*                                                                            */
-/*   Created: 21/12/2024 18:38:17 by NyTekCFW                                 */
-/*   Updated: 21/12/2024 18:38:29 by NyTekCFW                                 */
+/*   Created: 10/01/2025 00:24:45 by NyTekCFW                                 */
+/*   Updated: 16/01/2025 03:14:27 by NyTekCFW                                 */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../../includes/coregba.h"
-
+/*
 static void	_color_loop(s8 *row, s8 *b)
 {
 	static s8 rrow = 0;
@@ -48,7 +48,7 @@ static void	irq_color_loop(void)
 	
 	replace_color(208, tab[row][vb]);
 }
-
+*/
 static void	irq_key_getstatus(void)
 {
 	s8	i = -1;
@@ -67,23 +67,25 @@ static void	irq_key_getstatus(void)
 		keynum_execute(i);
 }
 
-void	irq_callback(void)
+void	irq_vblank(void)
 {
-	t_callback					*callback = get_callback();
-	static unsigned long int	frame = 0;
+	t_engine	*engine = get_engine();
+	t_callback	*callback = get_callback();
+	static u32	_frame = 0;
 
-	if (!(frame % 5))
-		irq_color_loop();
-	if (!(frame % 15))
+	//if (!(frame % 5))
+//		irq_color_loop();
+	if (!(_frame % engine->key_input_speed))
 		irq_key_getstatus();
+	audio_vsync();
 	if (callback->irq)
 		callback->irq();
-	frame = (frame + 1) % 0xFFFFFFFF;
+	_frame = (_frame + 1) % 0x7FFFFFFF;
 }
 
 void	run_task_irq(void)
 {
 	irqInit();
 	irqEnable(IRQ_VBLANK);
-	irqSet(IRQ_VBLANK, irq_callback);
+	irqSet(IRQ_VBLANK, irq_vblank);
 }

@@ -5,16 +5,16 @@
 /*                                                                            */
 /*   By: NyTekCFW - Youtube.com/NyTekCFW                                      */
 /*                                                                            */
-/*   Created: 20/12/2024 17:38:04 by NyTekCFW                                 */
-/*   Updated: 20/12/2024 17:38:06 by NyTekCFW                                 */
+/*   Created: 10/01/2025 00:24:45 by NyTekCFW                                 */
+/*   Updated: 16/01/2025 03:12:02 by NyTekCFW                                 */
 /*                                                                            */
 /* ************************************************************************** */
 
 #ifndef CORESYS_SYSTEM_H
 # define CORESYS_SYSTEM_H
 
-# define RESET_EWRAM				0x01
-# define RESET_IWRAM				0x02
+# define RESET_EWRAM			0x01
+# define RESET_IWRAM			0x02
 # define RESET_PALETTE			0x04
 # define RESET_VRAM				0x08
 # define RESET_OAM				0x10
@@ -34,5 +34,8 @@
 # include "coresys_dma.h"
 # include "coresys_malloc.h"
 # include "coresys_clock.h"
+# include "coresys_audio.h"
+# include "coresys_mix_audio.h"
+# include "coresys_playtime.h"
 
 #endif

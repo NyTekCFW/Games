@@ -81,7 +81,7 @@ void	CpuCopy16(const void *src, void *dest, u32 size)
 	CpuSet(src, dest, CPU_SET_16BIT | ((size) / (2) & 0x1FFFFF));
 }
 
-void	CpuFastCopy(const void *src, void *dest, u32 size)
+inline void	CpuFastCopy(const void *src, void *dest, u32 size)
 {
 	CpuFastSet(src, dest, (size / 4) & 0x1FFFFF);
 }

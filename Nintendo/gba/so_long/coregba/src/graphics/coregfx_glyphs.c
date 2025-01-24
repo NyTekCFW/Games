@@ -5,14 +5,14 @@
 /*                                                                            */
 /*   By: NyTekCFW - Youtube.com/NyTekCFW                                      */
 /*                                                                            */
-/*   Created: 20/12/2024 17:31:22 by NyTekCFW                                 */
-/*   Updated: 20/12/2024 17:31:42 by NyTekCFW                                 */
+/*   Created: 10/01/2025 00:24:45 by NyTekCFW                                 */
+/*   Updated: 16/01/2025 03:13:08 by NyTekCFW                                 */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../../includes/coregba.h"
 
-s8 font_basic[95][8] =
+ALIGNED(4) const s8 font_basic[95][8] =
 {
 	{ 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00},   // U+0020 ( )
     { 0x18, 0x3C, 0x3C, 0x18, 0x18, 0x00, 0x18, 0x00},   // U+0021 (!)
@@ -111,7 +111,7 @@ s8 font_basic[95][8] =
     { 0x6E, 0x3B, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00}    // U+007E (~)
 };
 
-u8	font_basic_width[95] =
+ALIGNED(4) const u8	font_basic_width[95] =
 {
 	0x03, 0x07, 0x07, 0x08, 0x07, 0x08, 0x08, 0x04, 0x06, 0x06, 0x09, 0x07, 0x05, 0x07, 0x05, 0x08, 0x08,
 	0x07, 0x07, 0x07, 0x08, 0x07, 0x07, 0x07, 0x07, 0x07, 0x07, 0x07, 0x06, 0x07, 0x07, 0x07, 0x08, 0x07,
@@ -121,7 +121,7 @@ u8	font_basic_width[95] =
 	0x08, 0x07, 0x08, 0x08, 0x07, 0x07, 0x04, 0x06, 0x07, 0x08
 };
 
-u8	font_button_width[17] =
+ALIGNED(4) const u8	font_button_width[17] =
 {
 	0x08, 0x08, 0x08, 0x08, 0x08, 0x08, 0x08, 0x08, 0x08, 0x10, 0x10, 0x18, 0x18, 0x08, 0x08, 0x08, 0x08
 };

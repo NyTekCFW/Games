@@ -13,16 +13,16 @@
 #ifndef BG_SETTINGS_H
 # define BG_SETTINGS_H
 
-enum	edvar_s
+enum	e_dvar_s
 {
 	VAR_SHOW_FPS		= 0,
-	VAR_LIMIT_FPS
+	VAR_LIMIT_FPS,
+	VAR_MAX
 };
 
 typedef struct settings_s
 {
-	bool	show_fps;
-	bool	limit_fps;
+	bool	vars[VAR_MAX];
 }ALIGN(4)	t_settings;
 
 char	*get_dvars_name(char *buffer, u8 index);

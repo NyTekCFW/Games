@@ -14,7 +14,7 @@
 # define CORESAVE_EEPROM_H
 
 u8		eeprom_status(void);
-void	save_to_eeprom(const void *data, u8 slot, u32 size);
-void	load_from_eeprom(void *data, u8 slot, u32 size);
+bool	save_to_eeprom(const void *data, u8 slot, u32 size);
+bool	load_from_eeprom(void *data, u8 slot, u32 size);
 
 #endif

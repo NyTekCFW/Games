@@ -18,12 +18,10 @@ IN_IWRAM void	draw_rectangle(s16 x, s16 y, s16 w, s16 h, u16 clr, u8 fill)
 	u16			*vbuf = gcm_get_draw_buffer();
 	u16			*start = NULL;
 	s16			j = 0;
-	s16			x2 = 0;
-	s16			y2 = 0;
+	s16			x2 = max(0, x);
+	s16			y2 = max(0, y);
 	u32			s = 0;
 
-	x2 = max(0, x);
-	y2 = max(0, y);
 	if (y > vmem->scaled_height || x > vmem->scaled_width || 
 		(w = min(w + (x < 0 ? x : 0), vmem->scaled_width - x2)) <= 0 || 
 		(h = min(h + (y < 0 ? y : 0), vmem->scaled_height - y2)) <= 0)

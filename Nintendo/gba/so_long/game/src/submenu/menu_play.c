@@ -12,18 +12,6 @@
 
 #include "../../includes/main.h"
 
-static void	_increment_scroll(void)
-{
-	submenu_scroll_increment(7, NULL);
-	submenu_refresh();
-}
-
-static void	_decrement_scroll(void)
-{
-	submenu_scroll_decrement(7, NULL);
-	submenu_refresh();
-}
-
 static void	_map_selection(void)
 {
 	s8			i = 0;
@@ -42,16 +30,33 @@ static void	_map_selection(void)
 		xfree((void **)&buffer);
 		++i;
 	}
-	draw_text(STR_BUTTON_B " Back", 2, 71, 0xFFFF);
 }
+
+static void	_draw_map_section(void)
+{
+	draw_rectangle(2, 2, 92, 68, 0x3def, 1);
+	_map_selection();
+}
+
+static void	_increment_scroll(void)
+{
+	submenu_scroll_increment(7, NULL);
+	_draw_map_section();
+}
+
+static void	_decrement_scroll(void)
+{
+	submenu_scroll_decrement(7, NULL);
+	_draw_map_section();
+}
+
 void	submenu_play(void)
 {
-
 	keynum_release(BUTTON_A);
 	unbind_allkeys();
 	keynum_replace(BUTTON_MOVE_FORWARD, _decrement_scroll);
 	keynum_replace(BUTTON_MOVE_BACKWARD, _increment_scroll);
 	keynum_replace(BUTTON_B, submenu_back);
-	keynum_replace(BUTTON_A, NULL);
 	_map_selection();
+	draw_text(STR_BUTTON_B " Back| " STR_DPAD_UP_DOWN " Move", 2, 71, 0xFFFF);
 }

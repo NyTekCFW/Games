@@ -5,8 +5,8 @@
 /*                                                                            */
 /*   By: NyTekCFW - Youtube.com/NyTekCFW                                      */
 /*                                                                            */
-/*   Created: 11/12/2024 16:28:03 by NyTekCFW                                 */
-/*   Updated: 20/12/2024 23:52:22 by NyTekCFW                                 */
+/*   Created: 10/01/2025 00:24:45 by NyTekCFW                                 */
+/*   Updated: 16/01/2025 03:11:03 by NyTekCFW                                 */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -32,10 +32,11 @@ typedef struct key_hook_s
 {
 	u16		code;
 	u8		id;
+	bool	freeze;
 	bool	ignore;
 	bool	is_pressed;
 	void	(*(callback))(void);
-}	t_key;
+}ALIGNED(4)	t_key;
 
 # include "corekey_code.h"
 # include "corekey_num.h"

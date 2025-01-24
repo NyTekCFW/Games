@@ -5,8 +5,8 @@
 /*                                                                            */
 /*   By: NyTekCFW - Youtube.com/NyTekCFW                                      */
 /*                                                                            */
-/*   Created: 01/01/2025 04:24:01 by NyTekCFW                                 */
-/*   Updated: 01/01/2025 04:24:03 by NyTekCFW                                 */
+/*   Created: 10/01/2025 00:24:45 by NyTekCFW                                 */
+/*   Updated: 16/01/2025 03:15:18 by NyTekCFW                                 */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -22,13 +22,14 @@ enum e_stats_ld
 	STATS_LD_DEATHS,
 	STATS_LD_RUPPIES,
 	STATS_LD_CLEARED_LVL,
+	STATS_LD_TIME,
 	STATS_LD_MAX
 };
 
 typedef struct stats_s
 {
-	u32	ld[STATS_LD_MAX];
-}	t_stats;
+	u32		ld[STATS_LD_MAX];
+}ALIGNED(4)	t_stats;
 
 char	*get_stat_info(u8 index);
 

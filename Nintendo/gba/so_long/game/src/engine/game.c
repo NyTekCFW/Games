@@ -5,12 +5,14 @@
 /*                                                                            */
 /*   By: NyTekCFW - Youtube.com/NyTekCFW                                      */
 /*                                                                            */
-/*   Created: 27/12/2024 17:21:34 by NyTekCFW                                 */
-/*   Updated: 27/12/2024 17:22:41 by NyTekCFW                                 */
+/*   Created: 10/01/2025 00:24:45 by NyTekCFW                                 */
+/*   Updated: 16/01/2025 03:17:06 by NyTekCFW                                 */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../../includes/main.h"
+
+#define STRING_TO_ARRAY(str) { str }
 
 t_root	*get_root(void)
 {
@@ -22,14 +24,43 @@ t_root	*get_root(void)
 		},
 		.gamestate = {
 			.status = 0,
+			.cl_ingame = false,
 			.in_pause = false
 		},
 		.settings =	{
-			.show_fps = false,
-			.limit_fps = true
+			.vars[VAR_SHOW_FPS] = true,
+			.vars[VAR_LIMIT_FPS] = false
 		},
-		.stats = { 9999999,.ld[STATS_LD_PRESTIGE] = 9999999, },
-		.save = { 0 },
+		.stats = {
+			.ld[STATS_LD_LVL] = 55,
+			.ld[STATS_LD_PRESTIGE] = 0,
+			.ld[STATS_LD_XP] = 8250,
+			.ld[STATS_LD_KILLS] = 0,
+			.ld[STATS_LD_DEATHS] = 0,
+			.ld[STATS_LD_RUPPIES] = 0,
+			.ld[STATS_LD_CLEARED_LVL] = 0,
+			.ld[STATS_LD_TIME] = 3599999
+		},
+		.sav = {
+			.header.coregba_version = COREGBA_VERSION,
+			.header.game_version = GAME_VERSION,
+			.user_data.skins[SKIN_JACKET] = 0x030b,
+			.user_data.skins[SKIN_BODY] = 0x1e7f,
+			.user_data.skins[SKIN_EQUIPMENTS] = 0x0178,
+			0
+		},
+		.user = {
+			.step = 0,
+			.flags = 0,
+			.dir_id = 0,
+			.health = 100,
+			.dir_flags = 0,
+			.max_health = 100,
+			.cam_addon = {0, 0},
+			.camera = {.x = 0, .y = 0},
+			.origin = {.x = 0, .y = 0},
+			.cur_tile = 0
+		},
 		.submenu =	{
 			.current_scroll = 0,
 			.current_sub = 0,
@@ -40,7 +71,7 @@ t_root	*get_root(void)
 				[SUB_MAIN_MENU] = submenu_main_menu,
 				[SUB_LVL_SELECT] = submenu_play,
 				[SUB_SKIN_COLOR] = submenu_skin_color,
-				[SUB_CUSTOM_LVL] = NULL,
+				[SUB_CUSTOM_LVL] = submenu_map_custom,
 				[SUB_OPTIONS] = submenu_options,
 				[SUB_CONTROLS] = submenu_controls,
 				[SUB_TROPHIES] = submenu_trophies,
@@ -59,6 +90,13 @@ t_root	*get_root(void)
 			[TROPHY_EXPLORER] = {.unlocked = false, .rarity = 2},
 			[TROPHY_STYLIST] = {.unlocked = false, .rarity = 1},
 			[TROPHY_ENDGAME] = {.unlocked = false, .rarity = 3}
+		},
+		.custom_map = {
+			[0] = {.in_use = false,.name = STRING_TO_ARRAY("Custom 1"),.l_data = NULL},
+			[1] = {.in_use = false,.name = STRING_TO_ARRAY("Custom 2"),.l_data = NULL},
+			[2] = {.in_use = false,.name = STRING_TO_ARRAY("Custom 3"),.l_data = NULL},
+			[3] = {.in_use = false,.name = STRING_TO_ARRAY("Custom 4"),.l_data = NULL},
+			[4] = {.in_use = false,.name = STRING_TO_ARRAY("Custom 5"),.l_data = NULL},
 		}
 	};
 	return (&root);
@@ -69,14 +107,19 @@ t_submenu	*get_submenu(void)
 	return (&get_root()->submenu);
 }
 
+t_area_info	*get_area_info(void)
+{
+	return (&get_root()->area_info);
+}
+
 t_stats	*get_stats(void)
 {
 	return (&get_root()->stats);
 }
 
-t_save	*get_save(void)
+t_sav	*get_sav(void)
 {
-	return (&get_root()->save);
+	return (&get_root()->sav);
 }
 
 t_trophy	*get_trophies(void)
@@ -104,4 +147,9 @@ t_gameinfo	*get_gameinfo(void)
 t_gamestate	*get_gamestate(void)
 {
 	return (&get_root()->gamestate);
+}
+
+t_user	*get_user(void)
+{
+	return (&get_root()->user);
 }

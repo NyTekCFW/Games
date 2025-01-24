@@ -50,7 +50,7 @@ u8	eeprom_status(void)
 	return (*get_eeprom_status());
 }
 
-void	save_to_eeprom(const void *data, u8 slot, u32 size)
+bool	save_to_eeprom(const void *data, u8 slot, u32 size)
 {
 	u8	*status = get_eeprom_status();
 
@@ -59,10 +59,12 @@ void	save_to_eeprom(const void *data, u8 slot, u32 size)
 		*status = EEPROM_READING;
 		eeprom_write((slot * size), data, size);
 		*status = EEPROM_WAITING;
+		return (true);
 	}
+	return (false);
 }
 
-void	load_from_eeprom(void *data, u8 slot, u32 size)
+bool	load_from_eeprom(void *data, u8 slot, u32 size)
 {
 	u8	*status = get_eeprom_status();
 
@@ -71,5 +73,7 @@ void	load_from_eeprom(void *data, u8 slot, u32 size)
 		*status = EEPROM_WRITING;
 		eeprom_read((slot * size), data, size);
 		*status = EEPROM_WAITING;
-	}	
+		return (true);
+	}
+	return (false);
 }

@@ -58,7 +58,7 @@ include $(DEVKITARM)/gba_rules
 # Variables principales
 PROJECT_NAME := Game_Engine
 OBJ_DIR      := obj
-PROJECT_SRC  := game game/src $(addprefix game/src/, engine textures bgame submenu)
+PROJECT_SRC  := game game/src $(addprefix game/src/, engine textures bgame clientscript submenu areas)
 PROJECT_INC  := game game/includes
 COREGBA_SRC  := coregba coregba/src $(addprefix coregba/src/, utils keys graphics_context graphics tasks savedata system)
 COREGBA_INC  := coregba/includes
@@ -120,7 +120,7 @@ export LIBPATHS := $(foreach dir,$(LIBDIRS),-L$(dir)/lib)
 
 
 # Règles principales
-.PHONY: $(OBJ_DIR) clean re
+.PHONY: $(OBJ_DIR) clean re play
 
 $(OBJ_DIR):
 	@printf "$(COLOR_CYAN)Creating directory $(OBJ_DIR)$(COLOR_RESET)\n"
@@ -133,6 +133,9 @@ clean:
 	@rm -rf $(OBJ_DIR)/*
 	@rm -fr $(PROJECT_NAME).elf $(PROJECT_NAME).gba
 	@printf "$(COLOR_BOLD)$(COLOR_YELLOW)All .o files and build removed.$(COLOR_RESET)\n"
+
+play:
+	@mgba-qt $(OUTPUT).gba > /dev/null 2>&1
 
 else
 

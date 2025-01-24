@@ -19,8 +19,9 @@
 # include "bg_settings.h"
 # include "bg_map.h"
 # include "bg_map_custom.h"
-# include "bg_client.h"
+# include "bg_user.h"
+# include "bg_dobj.h"
 # include "bg_stats.h"
 # include "bg_trophies.h"
-# include "bg_save.h"
+# include "bg_sav.h"
 #endif

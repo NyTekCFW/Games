@@ -17,6 +17,9 @@
 
 # include "submenu/submenus.h"
 # include "bgame/bg_bgame.h"
+# include "clientscript/client_command.h"
+# include "clientscript/client_camera.h"
+# include "areas/areas.h"
 # include "root.h"
 # include "textures/sprites.h"
 

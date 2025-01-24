@@ -12,7 +12,7 @@
 
 #include "../../includes/coregba.h"
 
-t_virtual	*get_virtual(void)
+inline t_virtual	*get_virtual(void)
 {
 	return (&get_core()->vmem);
 }
@@ -38,6 +38,8 @@ static void	set_virtual_mode(u8 scaled)
 	vmem->height = 128;
 	vmem->scaled_width = (scaled) ? 120 : 160;
 	vmem->scaled_height = (scaled) ? 80 : 128;
+	vmem->center.x = vmem->scaled_width / 2;
+	vmem->center.y = vmem->scaled_height / 2;
 	set_virtual_scale();
 }
 

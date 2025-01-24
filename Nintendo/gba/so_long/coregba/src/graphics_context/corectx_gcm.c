@@ -52,7 +52,7 @@ u16	*gcm_get_active_buffer(void)
 	return ((u16 *)get_gcm()->vbuf[GCM_CURRENT]);
 }
 
-u16	*gcm_get_draw_buffer(void)
+inline u16	*gcm_get_draw_buffer(void)
 {
 	t_gcm	*gcm = get_gcm();
 
@@ -89,6 +89,7 @@ void	gcm_prepare_flip(void)
 	while(REG_VCOUNT < 160)//// wait till VBlank
 		;
 	gcm_setflip();
+	CpuFastCopy(gcm_get_draw_buffer(), gcm_get_active_buffer(), gcm_get_buffer_size());
 }
 
 void	gcm_clear_active_buffer(void)
@@ -101,9 +102,10 @@ void	gcm_clear_active_buffer(void)
 void	gcm_clear_draw_buffer(void)
 {
 	t_gcm	*gcm = get_gcm();
-	u16		*ptr = (u16 *)gcm->vbuf[!gcm->current_buffer];
+	vu32	c = ((gcm->clear_color) << 16) | (gcm->clear_color);
 	
-	CpuFill(ptr, gcm->clear_color, gcm->total_size);
+	CpuFastSet((void *)&c, (u16 *)gcm->vbuf[!gcm->current_buffer],
+				CPU_FAST_SET_SRC_FIXED | ((gcm->total_size / 4) & 0x1FFFFF));
 }
 
 void	gcm_set_clear_color(u16 clr)

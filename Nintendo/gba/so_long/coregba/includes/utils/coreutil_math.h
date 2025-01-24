@@ -17,13 +17,12 @@
 # define min(a, b) ((a) < (b) ? (a) : (b))
 # define max(a, b) ((a) > (b) ? (a) : (b))
 
-/*
 typedef struct vec2_s
 {
 	int	x;
 	int	y;
 }	t_vec2;
-
+/*
 typedef struct vec3_s
 {
 	int	x;
@@ -48,4 +47,5 @@ typedef struct vec4_s
 
 s32		sqrti(s32 num);
 float	sqrtf(float num);
+int		clamp(int value, int min, int max);
 #endif

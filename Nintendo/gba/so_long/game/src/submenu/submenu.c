@@ -27,9 +27,11 @@ void	submenu_set(s8 sub)
 	if (sub >= 0 && sub < SUB_MAX)
 	{
 		_clear_bkg();
+		xmemset(menu->prev_sub, 0, sizeof(menu->prev_sub));
+		xmemset(menu->prev_scroll, 0, sizeof(menu->prev_scroll));
 		menu->prev_count = 0;
 		menu->current_scroll = 0;
-		menu->current_scroll = sub;
+		menu->current_sub = sub;
 		if (menu->entries[sub])
 			menu->entries[sub]();
 	}

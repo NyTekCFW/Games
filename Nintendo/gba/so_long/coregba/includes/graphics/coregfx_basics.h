@@ -14,8 +14,7 @@
 # define COREGFX_BASICS_H
 
 void	mx_put_pixel(t_virtual* vmem, u16 *vbuf, u16 x, u16 y, u16 clr);
-void	draw_sprite(s16 x, s16 y, s8 n_image, const char *name);
-void	draw_img(s16 x, s16 y, s16 w, s16 h, s8 n_image, const u16 *img);
+void	draw_sprite(s16 x, s16 y, u8 n_image, const char *name);
 void	print_img(s16 x, s16 y, s16 w, s16 h, s8 n_image, const u16 *img);
 u16		*get_px_adr(t_virtual* vmem, u16 *vbuf, u16 x, u16 y);
 #endif

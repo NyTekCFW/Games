@@ -5,8 +5,8 @@
 /*                                                                            */
 /*   By: NyTekCFW - Youtube.com/NyTekCFW                                      */
 /*                                                                            */
-/*   Created: 21/12/2024 18:05:44 by NyTekCFW                                 */
-/*   Updated: 21/12/2024 18:08:05 by NyTekCFW                                 */
+/*   Created: 10/01/2025 00:24:45 by NyTekCFW                                 */
+/*   Updated: 16/01/2025 03:10:39 by NyTekCFW                                 */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -35,19 +35,20 @@ typedef struct core_gcm_s
 	u32		vbuf[GCM_MAX];
 	u16		clear_color;
 	u16		total_size;
-}	t_gcm;
+}ALIGNED(4)	t_gcm;
 
 
 typedef struct mx_virtual_s
 {
-	u16	width;
-	u16	height;
-	u16	scaled_width;
-	u16	scaled_height;
-	u16	mode;
-	u8	use_scaling;
-	u8	timer_on;
-}	t_virtual;
+	u16		width;
+	u16		height;
+	u16		scaled_width;
+	u16		scaled_height;
+	u16		mode;
+	u8		use_scaling;
+	u8		timer_on;
+	t_vec2	center;
+}ALIGNED(2)	t_virtual;
 
 # include "corectx_gcm.h"
 # include "corectx_virtual.h"
