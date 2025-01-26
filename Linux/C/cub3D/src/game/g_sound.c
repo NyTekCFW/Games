@@ -17,6 +17,7 @@ void	playsound(char *file, int wait, int stop, int attenued)
 {
 	char	*base;
 	char	tmp[256];
+	int		x;
 
 	if (attenued)
 		base = "paplay --volume=1 sound/";
@@ -25,7 +26,7 @@ void	playsound(char *file, int wait, int stop, int attenued)
 	xmemset(tmp, 0, 256);
 	xmemcpy(tmp, base, xstrlen(base));
 	if (stop)
-		system("pkill -f paplay");
+		x = system("pkill -f paplay");
 	if (fnv1a_hash(file) == 2166136261u)
 		return ;
 	xmemcpy(&tmp[xstrlen(base)], file, xstrlen(file));
@@ -34,5 +35,6 @@ void	playsound(char *file, int wait, int stop, int attenued)
 	else
 		base = ".ogg";
 	xmemcpy(&tmp[xstrlen(tmp)], base, xstrlen(base));
-	system(tmp);
+	x = system(tmp);
+	(void)x;
 }

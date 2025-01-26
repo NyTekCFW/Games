@@ -50,7 +50,7 @@ void	_draw_loading(t_screen *screen, t_ml *lx, char *av, int prc)
 	if (prc == 100)
 	{
 		dbg_string(lx, 165, 90, "Done.");
-		system("pkill paplay");
+		x.mode = system("pkill paplay");
 	}
 }
 
