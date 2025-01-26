@@ -1,0 +1,10 @@
+NO ./textures/walls/brick_red.xpm
+SO ./textures/walls/brick_white.xpm
+WE ./textures/walls/cinderblock.xpm
+EA ./textures/walls/roof_brick.xpm
+
+F 220,            100, 9
+C 225, 30, 144
+
+111
+1N1
